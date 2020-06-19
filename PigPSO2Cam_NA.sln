@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30204.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PigPSO2Cam_NA", "PigPSO2Cam_NA\PigPSO2Cam_NA.vcxproj", "{4B13DC25-7F2A-43E3-A515-D705A110B217}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4B13DC25-7F2A-43E3-A515-D705A110B217}.Debug|x64.ActiveCfg = Debug|x64
+		{4B13DC25-7F2A-43E3-A515-D705A110B217}.Debug|x64.Build.0 = Debug|x64
+		{4B13DC25-7F2A-43E3-A515-D705A110B217}.Release|x64.ActiveCfg = Release|x64
+		{4B13DC25-7F2A-43E3-A515-D705A110B217}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4DC6CC22-7F1D-4F4F-A28E-3EB251F05CB4}
+	EndGlobalSection
+EndGlobal
