@@ -4,12 +4,10 @@
 #include "imgui_internal.h"
 #include <string>
 #include <sstream>
-#include <fstream>
 #include "../addresses.h"
 #include "../Util.h"
 
 #include <stdio.h>
-#include <time.h>
 
 
 #include <imgui_impl_dx9.h>

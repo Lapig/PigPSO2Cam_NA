@@ -52,7 +52,35 @@ HRESULT __stdcall hkEndScene(LPDIRECT3DDEVICE9 Device)
 
 		menu_init(game_hwnd, Device);
 	}
+	if (fovAddress == 0)
+	{
+		uint64_t fovaddy1 = readPointerOffset(fovPtrAddress, fovOffsets_1, false);
+		uint64_t fovaddy2 = readPointerOffset(fovPtrAddress, fovOffsets_2, false);
+		uint64_t fovaddy3 = readPointerOffset(fovPtrAddress, fovOffsets_3, false);
+		uint64_t fovaddy4 = readPointerOffset(fovPtrAddress, fovOffsets_4, false);
 
+		if (fovaddy1)
+		{
+			if (*(float*)fovaddy1 == 44)
+				fovAddress = (DWORD)fovaddy1;
+		}
+		else if (fovaddy2)
+		{
+			if (*(float*)fovaddy2 == 44)
+				fovAddress = (DWORD)fovaddy2;
+		}
+		else if (fovaddy3)
+		{
+			if (*(float*)fovaddy3 == 44)
+				fovAddress = (DWORD)fovaddy3;
+		}
+		else if (fovaddy4)
+		{
+			if (*(float*)fovaddy4 == 44)
+				fovAddress = (DWORD)fovaddy4;
+		}
+
+	}
 	if ((GetAsyncKeyState(0x2D) & 1)) { //insert
 		MENU_DISPLAYING = !MENU_DISPLAYING;
 	}
