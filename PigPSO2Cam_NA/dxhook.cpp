@@ -48,9 +48,11 @@ HRESULT __stdcall hkEndScene(LPDIRECT3DDEVICE9 Device)
 
 		D3DDEVICE_CREATION_PARAMETERS CParams;
 		Device->GetCreationParameters(&CParams);
+
+		HWND d3dhwnd = CParams.hFocusWindow;
 		game_wndproc = reinterpret_cast<WNDPROC>(SetWindowLongPtr(CParams.hFocusWindow, GWLP_WNDPROC, (LONG_PTR)WndProc));
 
-		menu_init(game_hwnd, Device);
+		menu_init(d3dhwnd, Device);
 	}
 	if (fovAddress == 0)
 	{
@@ -118,8 +120,12 @@ BOOL CALLBACK find_game_hwnd(HWND hwnd, LPARAM game_pid) {
 }
 
 DWORD64* dVtable;
+
+HWND tmpWnd;
 bool CreateDeviceD3D(HWND hWnd)
 {
+	tmpWnd = CreateWindowA("BUTTON", "DX", WS_SYSMENU | WS_MINIMIZEBOX, CW_USEDEFAULT, CW_USEDEFAULT, 300, 300, NULL, NULL, GetModuleHandle(NULL), NULL);
+
 	if ((g_pD3D = Direct3DCreate9(D3D_SDK_VERSION)) == NULL) {
 		//printf("D3D Failure to Init\n");
 		return false;
@@ -130,10 +136,10 @@ bool CreateDeviceD3D(HWND hWnd)
 	g_d3dpp.Windowed = TRUE;
 	g_d3dpp.SwapEffect = D3DSWAPEFFECT_DISCARD;
 	g_d3dpp.BackBufferFormat = D3DFMT_UNKNOWN;
-	g_d3dpp.EnableAutoDepthStencil = TRUE;
+/*	g_d3dpp.EnableAutoDepthStencil = TRUE;
 	g_d3dpp.AutoDepthStencilFormat = D3DFMT_D16;
-	g_d3dpp.PresentationInterval = D3DPRESENT_INTERVAL_ONE;           // Present with vsync
-	g_d3dpp.hDeviceWindow = hWnd;
+	g_d3dpp.PresentationInterval = D3DPRESENT_INTERVAL_ONE;*/           // Present with vsync
+	g_d3dpp.hDeviceWindow = tmpWnd;
 	//g_d3dpp.PresentationInterval = D3DPRESENT_INTERVAL_IMMEDIATE;   // Present without vsync, maximum unthrottled framerate
 	HRESULT ret = g_pD3D->CreateDevice(D3DADAPTER_DEFAULT, D3DDEVTYPE_HAL, hWnd, D3DCREATE_HARDWARE_VERTEXPROCESSING, &g_d3dpp, &g_pd3dDevice);
 	if (FAILED(ret)) { 
@@ -168,5 +174,6 @@ DWORD WINAPI installDXHooks()
 	DetourAttach(&(LPVOID&)oReset, (PBYTE)hkReset);
 	DetourTransactionCommit();
 
+	DestroyWindow(tmpWnd);
 	return 0;
 }

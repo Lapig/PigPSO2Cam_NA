@@ -68,7 +68,7 @@ static void draw_menu(bool* status)
 	ss << "EDITABLE: ";
 
 	ImVec4 color(1.0f, 0.0f, 0.0f, 1.0f);
-
+//	ss << std::hex << fovAddress;
 	if (fovAddress == 0x0) {
 		ss << "FALSE";
 	}
