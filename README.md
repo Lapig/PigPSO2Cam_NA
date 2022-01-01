@@ -1,6 +1,13 @@
-## PSO2NA FOV Tool
+### NA/JP Edition are now one single release located at https://github.com/Lapig/PigPSO2Cam 
 
-#### Usage
+## This repo is no longer being maintained
+
+<br/>
+<br/>
+
+#### PSO2NA FOV Tool
+
+##### Usage
 
 Download the [latest release](https://github.com/Lapig/PigPSO2Cam_NA/releases) from this repo, unzip the files into your pso2_bin folder, msstore or steam either will work, select overwrite at the prompt, a backup of that file is included in case you need to revert the change. 
 
